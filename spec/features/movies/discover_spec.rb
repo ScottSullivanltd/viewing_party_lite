@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Discover Page" do
   it "has a button to discover top rated movies", :vcr do
-    person = Person.create!(name: "Billy Williams", email: "bwill@mailer.com")
+    person = Person.create!(name: "Billy Williams", email: "bwill@mailer.com", password: "password123")
 
     party1 = Party.create!(host_id: 1, movie_id: 2, movie_name: "Star Wars", date: "May 4, 2022", time: "8:00pm", duration: 180)
     party2 = Party.create!(host_id: 1, movie_id: 3, movie_name: "Tootsie", date: "June 12, 2022", time: "6:00pm", duration: 130)
@@ -18,7 +18,7 @@ RSpec.describe "Discover Page" do
   end
 
   it "has a text field to enter keywords to search by movie title", :vcr do
-    person = Person.create!(name: "Billy Williams", email: "bwill@mailer.com")
+    person = Person.create!(name: "Billy Williams", email: "bwill@mailer.com", password: "password123")
 
     party1 = Party.create!(host_id: 1, movie_id: 2, movie_name: "Star Wars", date: "May 4, 2022", time: "8:00pm", duration: 180)
     party2 = Party.create!(host_id: 1, movie_id: 3, movie_name: "Tootsie", date: "June 12, 2022", time: "6:00pm", duration: 130)

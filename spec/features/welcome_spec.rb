@@ -12,8 +12,8 @@ RSpec.describe "Welcome Page" do
   end
 
   it "has list of each user with link to each user's dashboard" do
-    person1 = Person.create!(name: "Scott Pascale", email: "spascale@mailg.com")
-    person2 = Person.create!(name: "Luke Sullivan", email: "lsullivan@mailg.com")
+    person1 = Person.create!(name: "Scott Pascale", email: "spascale@mailg.com", password: "password123")
+    person2 = Person.create!(name: "Luke Sullivan", email: "lsullivan@mailg.com", password: "password321")
 
     visit "/"
 
