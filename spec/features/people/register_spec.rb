@@ -20,6 +20,7 @@ RSpec.describe "Register New User" do
     expect(page).to have_content("Jamison Ordway")
     expect(person).to_not have_attribute(:password)
     expect(person.password_digest).to_not eq("password123")
+    expect(page).to have_content("Welcome, #{person.name}!")
   end
 end
 

@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
     person = person_params
     person[:email] = person[:email].downcase
     new_person = Person.create(person)
+    flash[:success] = "Welcome, #{new_person.name}!"
     redirect_to person_path(new_person.id)
   end
 
