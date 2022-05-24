@@ -18,6 +18,29 @@ class PeopleController < ApplicationController
     redirect_to person_path(new_person.id)
   end
 
+  def login_form
+  end
+
+  def login
+    person = Person.find_by(email: params[:email])
+    if person
+      person.authenticate(params[:password])
+      flash[:success] = "Welcome, #{person.name}!"
+      redirect_to person_path(person.id)
+    else
+      flash[:alert] = "Incorrect Input.  Please Try Again"
+      redirect_to "/login"
+    end
+  end
+
+  # person = Person.find(params[:email])
+  # if person.authenticate(params[:password])
+  #   redirect_to person_path(person.id)
+  # else
+  #   redirect_to '/login'
+  #   flash[:message] = "#{person.errors.full_message.to_sentence}"
+  # end
+
   private
 
   def person_params
