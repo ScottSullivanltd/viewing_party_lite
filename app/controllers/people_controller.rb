@@ -14,8 +14,13 @@ class PeopleController < ApplicationController
     person = person_params
     person[:email] = person[:email].downcase
     new_person = Person.create(person)
-    flash[:success] = "Welcome, #{new_person.name}!"
-    redirect_to person_path(new_person.id)
+    if new_person.save
+      flash[:success] = "Welcome, #{new_person.name}!"
+      redirect_to person_path(new_person.id)
+    else
+      flash[:alert] = new_person.errors.full_messages.to_sentence
+      render :new
+    end
   end
 
   def login_form
