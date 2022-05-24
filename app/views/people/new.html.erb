@@ -5,5 +5,9 @@
 	<p><%= f.text_area :name %></p>
 	<p><%= f.label :email %></p>
 	<p><%= f.text_area :email %></p>
+	<p><%= f.label :password, 'Password:' %></p>
+	<p><%= f.password_field :password %></p>
+	<p><%= f.label :password_confirmation, 'Confirm Password:' %></p>
+	<p><%= f.password_field :password_confirmation %></p>
 	<p><%= f.submit "Register" %></p>
 <% end %>

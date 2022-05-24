@@ -11,14 +11,15 @@ class PeopleController < ApplicationController
   end
 
   def create
-    person = Person.new(person_params)
-    person.save
-    redirect_to person_path(person.id)
+    person = person_params
+    person[:email] = person[:email].downcase
+    new_person = Person.create(person)
+    redirect_to person_path(new_person.id)
   end
 
   private
 
   def person_params
-    params.permit(:id, :name, :email)
+    params.permit(:name, :email, :password)
   end
 end
