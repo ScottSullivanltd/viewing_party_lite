@@ -22,6 +22,25 @@ RSpec.describe "Register New User" do
     expect(person.password_digest).to_not eq("password123")
     expect(page).to have_content("Welcome, #{person.name}!")
   end
+
+  it "will not register new user with impropper credentials" do
+    visit root_path
+
+    click_button "Create New User"
+
+    expect(current_path).to eq(new_person_path)
+
+    fill_in "Name", with: ""
+    fill_in "Email", with: "jordway@mailg.com"
+    fill_in "Password:", with: "password123"
+    fill_in "Confirm Password:", with: "password321"
+    click_button "Register"
+
+    person = Person.last
+
+    expect(current_path).to eq(people_path)
+    expect(page).to have_content("Name can't be blank")
+  end
 end
 
 # person = Person.last,  check out 'reload'
