@@ -29,6 +29,7 @@ class PeopleController < ApplicationController
   def login
     person = Person.find_by(email: params[:email])
     if person.authenticate(params[:password])
+      session[:person_id] = person.id
       flash[:success] = "Welcome, #{person.name}!"
       redirect_to person_path(person.id)
     else
