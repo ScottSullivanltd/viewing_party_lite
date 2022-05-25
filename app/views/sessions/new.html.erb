@@ -1,13 +1,13 @@
 <h1>Register New User</h1>
 
-<%= form_with url: people_path, method: :post, local:true do |f|%>
+<%= form_with url: "/register", method: :post, local:true do |f|%>
 	<p><%= f.label :name %></p>
 	<p><%= f.text_area :name %></p>
 	<p><%= f.label :email %></p>
 	<p><%= f.text_area :email %></p>
 	<p><%= f.label :password, 'Password:' %></p>
-	<p><%= f.password_field :password %></p>
-	<p><%= f.label :password_confirmation, 'Confirm Password:' %></p>
+	<p><%= f.password_field :password, required: true %></p>
+	<p><%= f.label :password_confirmation, 'Confirm Password:', required: true %></p>
 	<p><%= f.password_field :password_confirmation %></p>
 	<p><%= f.submit "Register" %></p>
 <% end %>

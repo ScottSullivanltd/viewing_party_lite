@@ -1,0 +1,10 @@
+<h2>Welcome to Admin Dashboard</h2>
+
+<%= link_to 'Log Out', '/logout', method: :delete %>
+
+<h1>View Party</h1>
+
+<h2>Current People</h2>
+<% @people.each do |person| %>
+  <p><%= link_to "#{person.email}", "/admin/people/person.id" %></p>
+<% end %>

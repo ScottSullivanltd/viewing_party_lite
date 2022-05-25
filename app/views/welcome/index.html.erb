@@ -1,10 +1,17 @@
-<h1>View Party</h1>
+<% if current_user %>
+  <h2>Welcome Back</h2>
+  <%= link_to 'Log Out', '/logout', method: :delete %>
 
-<p><strong><%= link_to "I already have an account", login_path %></strong></p>
+  <h1>View Party</h1>
 
-<p><%= button_to "Create New User", new_person_path, method: :get %></p>
+  <h2>Current People</h2>
+  <% @people.each do |person| %>
+    <p><%= "#{person.email}" %></p>
+  <% end %>
 
-<h2>Current People</h2>
-<% @people.each do |person| %>
-  <p><%= link_to "#{person.name}", person_path(person.id) %></p>
+<% else %>
+  <h2>Welcome!</h2>
+  <p><strong><%= link_to "I already have an account", login_path %></strong></p>
+  <p><%= button_to "Create New User", "/register", method: :get %></p>
+
 <% end %>

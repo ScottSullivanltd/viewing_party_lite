@@ -7,13 +7,16 @@ Rails.application.routes.draw do
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
-  resources :people, only: [:show, :index]
+  resources :people, only: [:index]
+  get "/dashboard", to: "people#show", as: "person"
   get "/discover", to: "movies#discover", as: "discover"
 
   resources :movies, only: [:index, :show]
 
   namespace :admin do
     get "/dashboard", to: "dashboard#index"
+    get "/admin/people/:id", to: "people#show"
   end
 end
